@@ -13,14 +13,14 @@ defaultThemeColor = "#FFFFFF"
 
 enableSearch = true
 enableCodeCopy = true
-enableImageLazyLoading = false
+enableImageLazyLoading = true
 enableImageWebp = true
 
 # robots = ""
 fingerprintAlgorithm = "sha256"
 
 [header]
-  layout = "basic" # valid options: basic, hamburger, hybrid, custom
+  layout = "hybrid" # valid options: basic, hamburger, hybrid, custom
   logo = "img/logo.jpg"
   # logoDark = "img/dark-logo.jpg"
   showTitle = true
