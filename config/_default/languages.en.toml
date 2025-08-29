@@ -3,7 +3,7 @@ languageName = "English"
 languageDirection = "ltr"
 weight = 1
 
-title = "Shunyao | "
+title = "Shunyao Jin"
 copyright = "Copy, _right?_ :thinking_face:"
 
 [params]
@@ -18,8 +18,8 @@ copyright = "Copy, _right?_ :thinking_face:"
   headline = "A generally awesome human"
   bio = "A little bit about you"
   links = [
-    { email = "mailto:hello@your_domain.com" },
-    { link = "https://link-to-some-website.com/" },
+    { email = "mailto:jinshunyao1@gmail.com" },
+  #   { link = "https://link-to-some-website.com/" },
   #   { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
   #   { apple = "https://www.apple.com" },
   #   { blogger = "https://username.blogspot.com/" },
@@ -30,7 +30,7 @@ copyright = "Copy, _right?_ :thinking_face:"
   #   { facebook = "https://facebook.com/username" },
   #   { flickr = "https://www.flickr.com/photos/username/" },
   #   { foursquare = "https://foursquare.com/username" },
-    { github = "https://github.com/username" },
+    { github = "https://github.com/K1ngSY" },
   #   { gitlab = "https://gitlab.com/username" },
   #   { google = "https://www.google.com/" },
   #   { google-scholar = "https://scholar.google.com/citations?user=user-id" },
@@ -40,7 +40,7 @@ copyright = "Copy, _right?_ :thinking_face:"
   #   { kickstarter = "https://www.kickstarter.com/profile/username" },
   #   { kofi = "https://ko-fi.com/username" },
   #   { lastfm = "https://lastfm.com/user/username" },
-    { linkedin = "https://linkedin.com/in/username" },
+    { linkedin = "https://www.linkedin.com/in/shunyao-jin-5495a4355/" },
   #   { mastodon = "https://mastodon.instance/@username" },
   #   { medium = "https://medium.com/username" },
   #   { mendeley = "https://www.mendeley.com/" },
@@ -54,7 +54,7 @@ copyright = "Copy, _right?_ :thinking_face:"
   #   { snapchat = "https://snapchat.com/add/username" },
   #   { soundcloud = "https://soundcloud.com/username" },
   #   { stack-overflow = "https://stackoverflow.com/users/userid/username" },
-    { steam = "https://steamcommunity.com/profiles/userid" },
+  #   { steam = "https://steamcommunity.com/profiles/userid" },
   #   { telegram = "https://t.me/username" },
   #   { threads = "https://threads.net/@username" },
   #   { tiktok = "https://tiktok.com/@username" },
