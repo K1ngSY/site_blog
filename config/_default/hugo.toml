@@ -4,6 +4,8 @@
 
 baseURL = "https://blog.shunyao.xyz/"
 defaultContentLanguage = "en"
+canonifyURLs = true
+relativeURLs = false
 
 enableRobotsTXT = true
 summaryLength = 0
