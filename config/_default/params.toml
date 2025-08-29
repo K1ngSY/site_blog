@@ -21,8 +21,8 @@ fingerprintAlgorithm = "sha256"
 
 [header]
   layout = "hybrid" # valid options: basic, hamburger, hybrid, custom
-  logo = "img/logo.jpg"
-  # logoDark = "img/dark-logo.jpg"
+  logo = "img/jsy_header_light.png"
+  logoDark = "img/jsy_header_dark.png"
   showTitle = true
 
 [footer]
