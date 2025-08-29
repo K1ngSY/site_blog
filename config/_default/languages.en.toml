@@ -14,7 +14,7 @@ copyright = "Copy, _right?_ :thinking_face:"
 
 [params.author]
   name = "Shunyao Jin"
-  image = "img/author.png"
+  image = "img/author.jpg"
   headline = "A generally awesome human"
   bio = "A little bit about you"
   links = [
