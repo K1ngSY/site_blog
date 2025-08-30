@@ -11,6 +11,16 @@
 # ordered by weight from lowest to highest.
 
 [[main]]
+  name = "About"
+  pageRef = "About"
+  weight = 5
+
+[[main]]
+  name = "Email"
+  url = "mailto:jinshunyao1@gmail.com"
+  weight = 6
+
+[[main]]
   name = "Blog"
   pageRef = "posts"
   weight = 10
@@ -26,7 +36,7 @@
   weight = 25
   [main.params]
     icon = "github"
-    showName = true
+    showName = false
     target = "_blank"
 
 [[main]]
