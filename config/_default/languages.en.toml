@@ -15,11 +15,11 @@ copyright = "Copy, _right?_ :thinking_face:"
 [params.author]
   name = "Shunyao Jin"
   image = "img/author.jpg"
-  headline = "A generally awesome human"
-  bio = "A little bit about you"
+  headline = "A generally awesome human :-)"
+  bio = "I’m not smart. I just wear glasses."
   links = [
     { email = "mailto:jinshunyao1@gmail.com" },
-  #   { link = "https://link-to-some-website.com/" },
+    { link = "https://blog.shunyao.xyz/" },
   #   { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
   #   { apple = "https://www.apple.com" },
   #   { blogger = "https://username.blogspot.com/" },
