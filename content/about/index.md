@@ -12,7 +12,7 @@ This is my personal site built with [Hugo](https://gohugo.io/) + [Congo](https:/
 
 - 🎓 CS student at De Anza College, planning to transfer to a UC campus  
 - 💻 Projects: Ark Alarm Bot (C++17 + Qt, OpenCV, OCR)  
-- 🖥️ PC enthusiast & DIY builder, often helping friends assemble their first rigs  
+- 🖥️ PC enthusiast & DIY builder, often helping friends assemble their first pcs  
 - 📷 Hobbyist photographer and former soccer player  
 - 🌏 Based in California  
 
