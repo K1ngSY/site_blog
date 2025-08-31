@@ -11,7 +11,7 @@ Hi 👋 I’m **Shunyao**.
 This is my personal site built with Hugo + Congo.
 
 - 🎓 CS student at De Anza College
-- 💻 Projects: Ark Alarm Bot V2, networking, DevOps
+- 💻 Projects: Ark Alarm Bot(Qt C++)
 - 🌏 Based in California
 
 ![Me](me.jpg)
