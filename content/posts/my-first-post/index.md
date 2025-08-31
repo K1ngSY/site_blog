@@ -3,7 +3,7 @@ date = '2025-08-29T17:04:18-07:00'
 draft = false
 title = 'My First Post'
 description = "This is my very first blog post using Hugo + Congo."
-summary = "A short summary of my first blog post."
+summary = "My first blog post which tests the site functionally."
 tags = ["hugo", "congo", "first", "posts"]
 +++
 

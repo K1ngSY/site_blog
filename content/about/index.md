@@ -14,4 +14,4 @@ This is my personal site built with Hugo + Congo.
 - 💻 Projects: Ark Alarm Bot(Qt C++)
 - 🌏 Based in California
 
-![Me](me.jpg)
+![Me](avatar.jpg)
