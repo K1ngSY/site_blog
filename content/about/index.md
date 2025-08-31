@@ -37,3 +37,16 @@ I’ve always been passionate about gaming, and over the years I’ve played man
 ---
 
 Gaming has been a big part of my free time and personal growth. Whether competitive multiplayer, immersive single-player adventures, or long-term survival challenges, I’ve always enjoyed diving deep into virtual worlds.
+
+---
+
+## Beyond Gaming ⚽📷
+
+Another big part of my life, especially during high school, was soccer.  
+I had been practicing the sport since I was very young—joining my elementary school’s soccer team as early as second grade. Although I didn’t play much during middle school, things changed in high school when I met a group of classmates who were just as passionate about the game as I was.  
+
+Every afternoon during the long recess, we would head to the field, running, sweating, and enjoying the thrill of the matches. Sometimes we even played against students from other grades, which made the experience even more exciting. Through soccer, I not only stayed active but also built strong friendships that have remained meaningful to me long after those games ended.
+
+Apart from sports, I also developed a love for photography. I never studied it formally, but I always felt the urge to capture the world whenever I came across a beautiful scene. In high school, I bought a second-hand Fujifilm digital zoom camera, which became one of my favorite possessions. With it, I documented countless fleeting moments on campus—sunsets over the fields, candid shots of friends, and everyday details that now feel like precious memories of my school life.
+
+These experiences in sports and photography shaped much of who I am outside of academics and gaming, giving me both lasting friendships and a way to preserve the moments that matter most.
