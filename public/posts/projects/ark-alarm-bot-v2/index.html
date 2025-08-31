@@ -139,7 +139,7 @@
     "keywords": ["projects","posts"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "102"
+    "wordCount": "1682"
   }
   </script>
     
@@ -617,7 +617,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2025-08-30 21:47:09 -0700 PDT">30 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>102 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+      <time datetime="2025-08-30 21:47:09 -0700 PDT">30 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>1682 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
     
 
     
@@ -644,6 +644,296 @@
 <li><strong>Qt 6.9</strong></li>
 <li><strong>OpenCV</strong></li>
 <li><strong>Tesseract OCR</strong></li>
+</ul>
+<h1 id="ark-alarm-v2-technical-overview" class="relative group">Ark Alarm V2 Technical Overview <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#ark-alarm-v2-technical-overview" aria-label="Anchor">#</a></span></h1><h2 id="introduction" class="relative group">Introduction <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#introduction" aria-label="Anchor">#</a></span></h2><p>Ark Alarm V2 is the second generation of an open-source <strong>Ark: Survival Evolved</strong> alarm assistant. While the initial V1 prototype proved the concept, it suffered from limited modularity and brittle platform integration. Version 2 was rewritten in <strong>C++17</strong> and <strong>Qt 6.9</strong> to achieve cross-platform window management, a plugin-friendly architecture, and higher OCR accuracy. Major improvements include:</p>
+<ul>
+<li>A unified <strong>image processing pipeline</strong> built on OpenCV 4.x and Tesseract 5.x.</li>
+<li>Robust <strong>crash detection</strong> and automatic recovery from the &ldquo;Shooter Crash Reporter&rdquo; dialog.</li>
+<li>A <strong>rejoiner</strong> subsystem that re-enters servers after disconnects.</li>
+<li>Structured configuration via YAML and a richer logging subsystem.</li>
+</ul>
+
+  
+  
+  
+  
+  
+
+  
+  
+    
+    
+  
+  <figure class="mx-auto my-0 rounded-md">
+    <img src="images/dashboard.png" alt="" class="mx-auto my-0 rounded-md"/>
+    <figcaption class="text-center">Ark Alarm V2 dashboard showing overlay and status widgets</figcaption>
+  </figure>
+
+
+<h2 id="quick-facts--tech-stack" class="relative group">Quick Facts / Tech Stack <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#quick-facts--tech-stack" aria-label="Anchor">#</a></span></h2><table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Version / Example</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Language</strong></td>
+          <td>C++17</td>
+          <td>Multi-threaded via QtConcurrent</td>
+      </tr>
+      <tr>
+          <td><strong>UI Toolkit</strong></td>
+          <td>Qt 6.9</td>
+          <td>Widgets, signals/slots</td>
+      </tr>
+      <tr>
+          <td><strong>Image Processing</strong></td>
+          <td>OpenCV 4.x</td>
+          <td>Window capture, filtering</td>
+      </tr>
+      <tr>
+          <td><strong>OCR Engine</strong></td>
+          <td>Tesseract 5.x</td>
+          <td>LSTM-based recognition</td>
+      </tr>
+      <tr>
+          <td><strong>Build System</strong></td>
+          <td>CMake 3.28+</td>
+          <td>Cross-platform builds</td>
+      </tr>
+      <tr>
+          <td><strong>Packaging</strong></td>
+          <td>WiX Toolset / NSIS</td>
+          <td>&gt; TODO: verify installer choice</td>
+      </tr>
+      <tr>
+          <td><strong>CI/CD</strong></td>
+          <td>GitHub Actions</td>
+          <td>Unit tests &amp; cross-compilation</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="architecture-overview" class="relative group">Architecture Overview <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#architecture-overview" aria-label="Anchor">#</a></span></h2><p>Ark Alarm V2 is divided into loosely coupled modules communicating through Qt signals. The core components are:</p>
+<ul>
+<li><strong>Dashboard</strong>: primary UI, user preferences, server list.</li>
+<li><strong>Scanner</strong>: periodic window capture, preprocesses frames, feeds OCR.</li>
+<li><strong>Visual Overlay</strong>: draws bounding boxes and debug layers.</li>
+<li><strong>CrashHandler</strong>: monitors top-level windows, closes the crash reporter.</li>
+<li><strong>Rejoiner</strong>: sequences keystrokes and mouse events to return to the game.</li>
+<li><strong>KWorker</strong>: lightweight job queue to execute deferred tasks.</li>
+</ul>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart TD
+    A[Game Window Capture] --&gt; B[Preprocessing]
+    B --&gt; C[OCR Recognition]
+    C --&gt; D{Decision Engine}
+    D --&gt;|Alert| E[Sender]
+    D --&gt;|Overlay| F[Visual Module]
+    C --&gt;|Debug| F
+    G[Crash Handler] --&gt; D
+</code></pre><p>Data flows from capture to decision modules, while auxiliary services such as the CrashHandler feed into the same decision engine.</p>
+<h2 id="image-processing--ocr-pipeline" class="relative group">Image Processing &amp; OCR Pipeline <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#image-processing--ocr-pipeline" aria-label="Anchor">#</a></span></h2><p>The pipeline converts game frames into actionable signals:</p>
+<ol>
+<li><strong>Window Capture</strong> – Using Win32 APIs or X11 depending on platform.</li>
+<li><strong>Preprocessing</strong> – Grayscale, thresholding, contour detection.</li>
+<li><strong>OCR</strong> – Tesseract extracts tokens like &ldquo;TRIBE LOG&rdquo; or &ldquo;TAMED DINOSAUR&rdquo;.</li>
+<li><strong>Decision</strong> – A rules engine triggers actions (notifications, auto-rejoin).</li>
+</ol>
+<p>The pipeline embraces a modular philosophy. Each step emits intermediate artifacts that can be visualized or logged for debugging. After preprocessing, morphological filters such as dilation and erosion are optionally applied to stabilize character boundaries. A region-of-interest map narrows OCR to just the tribe log and tamed-dinosaur panels, improving both speed and accuracy. Tokens are compared against a configurable list of alert phrases using a case-insensitive trie, and fuzzy matching handles minor OCR errors without triggering false positives.</p>
+<h3 id="sample-c-pipeline-code" class="relative group">Sample C++ Pipeline Code <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#sample-c-pipeline-code" aria-label="Anchor">#</a></span></h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">CaptureWindow</span><span class="p">(</span><span class="n">hwnd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">gray</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">gray</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">COLOR_BGR2GRAY</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">bin</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">threshold</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">bin</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">THRESH_OTSU</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Invert for white-on-black text
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">cv</span><span class="o">::</span><span class="n">bitwise_not</span><span class="p">(</span><span class="n">bin</span><span class="p">,</span> <span class="n">bin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Send to Tesseract
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">tesseract</span><span class="o">::</span><span class="n">TessBaseAPI</span><span class="o">&gt;</span> <span class="n">ocr</span><span class="p">(</span><span class="k">new</span> <span class="n">tesseract</span><span class="o">::</span><span class="n">TessBaseAPI</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">ocr</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">(</span><span class="s">&#34;./tessdata&#34;</span><span class="p">,</span> <span class="s">&#34;eng&#34;</span><span class="p">,</span> <span class="n">tesseract</span><span class="o">::</span><span class="n">OEM_LSTM_ONLY</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">ocr</span><span class="o">-&gt;</span><span class="n">SetImage</span><span class="p">(</span><span class="n">bin</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">bin</span><span class="p">.</span><span class="n">cols</span><span class="p">,</span> <span class="n">bin</span><span class="p">.</span><span class="n">rows</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bin</span><span class="p">.</span><span class="n">step</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span> <span class="o">=</span> <span class="n">ocr</span><span class="o">-&gt;</span><span class="n">GetUTF8Text</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">HandleTokens</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+</span></span></code></pre></div><p>This example demonstrates end-to-end frame processing using OpenCV and Tesseract. The real code adds bounding-box extraction and per-region classification.</p>
+<h2 id="crash--exception-handling" class="relative group">Crash &amp; Exception Handling <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#crash--exception-handling" aria-label="Anchor">#</a></span></h2><p>The <strong>CrashHandler</strong> continuously enumerates top-level windows. If a title matches patterns like &ldquo;Shooter Crash Reporter&rdquo;, the handler posts a <code>WM_CLOSE</code> message. The core logic uses Win32&rsquo;s <code>EnumWindows</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">EnumData</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">QStringList</span> <span class="o">*</span><span class="n">tokens</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">HWND</span> <span class="n">found</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">EnumData</span> <span class="n">data</span><span class="p">{</span> <span class="o">&amp;</span><span class="n">m_crash_windows_keywords</span><span class="p">,</span> <span class="k">nullptr</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="o">::</span><span class="n">EnumWindows</span><span class="p">([](</span><span class="n">HWND</span> <span class="n">hwnd</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lparam</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BOOL</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="o">&amp;</span><span class="n">d</span> <span class="o">=</span> <span class="o">*</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">EnumData</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">lparam</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!::</span><span class="n">IsWindowVisible</span><span class="p">(</span><span class="n">hwnd</span><span class="p">))</span> <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">wchar_t</span> <span class="n">buf</span><span class="p">[</span><span class="mi">512</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="o">::</span><span class="n">GetWindowTextW</span><span class="p">(</span><span class="n">hwnd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">_countof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">QString</span> <span class="n">title</span> <span class="o">=</span> <span class="n">QString</span><span class="o">::</span><span class="n">fromWCharArray</span><span class="p">(</span><span class="n">buf</span><span class="p">).</span><span class="n">trimmed</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">title</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">())</span> <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="n">QString</span> <span class="o">&amp;</span><span class="nl">t</span> <span class="p">:</span> <span class="o">*</span><span class="n">d</span><span class="p">.</span><span class="n">tokens</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">t</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">title</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Qt</span><span class="o">::</span><span class="n">CaseInsensitive</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">d</span><span class="p">.</span><span class="n">found</span> <span class="o">=</span> <span class="n">hwnd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span> <span class="c1">// stop
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">LPARAM</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">data</span><span class="p">));</span>
+</span></span></code></pre></div><p>Once a matching window is found, the module invokes <code>PostMessageW(data.found, WM_CLOSE, 0, 0)</code> to dismiss the dialog. The handler also logs stack traces for further inspection.</p>
+<h2 id="reconnect--rejoin-strategy" class="relative group">Reconnect / Rejoin Strategy <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#reconnect--rejoin-strategy" aria-label="Anchor">#</a></span></h2><p>Ark servers may drop connections due to network hiccups or server resets. The <strong>Rejoiner</strong> automates the steps needed to return to a selected server.</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">stateDiagram-v2
+    [*] --&gt; Disconnected
+    Disconnected --&gt; LaunchingGame
+    LaunchingGame --&gt; MainMenu
+    MainMenu --&gt; ServerList : Fetch servers
+    ServerList --&gt; Joining : Double-click
+    Joining --&gt; InGame
+    InGame --&gt; [*]
+    InGame --&gt; Disconnected : Connection lost
+</code></pre><p>The Rejoiner sequences keystrokes using Qt&rsquo;s <code>QKeyEvent</code> APIs or Win32 input events. Each transition checks for timeouts, failed joins, or crash dialogs before proceeding. A backlog queue allows repeated attempts with exponential backoff to avoid rate limiting.</p>
+<h2 id="configuration" class="relative group">Configuration <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#configuration" aria-label="Anchor">#</a></span></h2><p>Ark Alarm V2 reads a YAML file that controls capture regions, OCR thresholds, and rejoin behaviour. A minimal configuration looks like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">window</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;ARK: Survival Evolved&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">capture_interval_ms</span><span class="p">:</span><span class="w"> </span><span class="m">1500</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ocr</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">lang</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;eng&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">psm</span><span class="p">:</span><span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="c"># Assume a single uniform block of text</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">actions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">on_match</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;notify&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">channel</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;discord&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;overlay&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;#00FF00&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">rejoin</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">max_attempts</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">backoff_ms</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="m">5000</span><span class="p">,</span><span class="w"> </span><span class="m">15000</span><span class="p">,</span><span class="w"> </span><span class="m">30000</span><span class="p">]</span><span class="w">
+</span></span></span></code></pre></div><p><strong>Explanation</strong>:</p>
+<ul>
+<li><code>window</code> – Contains the title token used to locate the game window and the capture interval.</li>
+<li><code>ocr</code> – Language and Page Segmentation Mode for Tesseract.</li>
+<li><code>actions</code> – Ordered list of tasks triggered when tokens are recognized.</li>
+<li><code>rejoin</code> – Controls the backoff strategy for automatic reconnect attempts.</li>
+</ul>
+<blockquote>
+<p>TODO: Document advanced options for log file rotation and custom hooks.</p></blockquote>
+<h2 id="building-the-project-windows" class="relative group">Building the Project (Windows) <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#building-the-project-windows" aria-label="Anchor">#</a></span></h2><p>Ark Alarm V2 can be built either with <strong>MSVC + vcpkg</strong> or <strong>MSYS2 + pacman</strong>. Both paths rely on a CMake-based build configured for Qt and OpenCV.</p>
+<h3 id="msvc--vcpkg" class="relative group">MSVC + vcpkg <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#msvc--vcpkg" aria-label="Anchor">#</a></span></h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Clone and bootstrap vcpkg</span>
+</span></span><span class="line"><span class="cl"><span class="n">PS</span><span class="p">&gt;</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">microsoft</span><span class="p">/</span><span class="n">vcpkg</span><span class="p">.</span><span class="py">git</span>
+</span></span><span class="line"><span class="cl"><span class="n">PS</span><span class="p">&gt;</span> <span class="p">.\</span><span class="n">vcpkg</span><span class="p">\</span><span class="nb">bootstrap-vcpkg</span><span class="p">.</span><span class="py">bat</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Install dependencies</span>
+</span></span><span class="line"><span class="cl"><span class="n">PS</span><span class="p">&gt;</span> <span class="p">.\</span><span class="n">vcpkg</span><span class="p">\</span><span class="n">vcpkg</span> <span class="n">install</span> <span class="n">qtbase</span><span class="err">:</span><span class="nb">x64-windows</span> <span class="n">opencv</span><span class="p">[</span><span class="no">tiff</span><span class="p">]</span><span class="err">:</span><span class="nb">x64-windows</span> <span class="n">tesseract</span><span class="err">:</span><span class="nb">x64-windows</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Configure &amp; build</span>
+</span></span><span class="line"><span class="cl"><span class="n">PS</span><span class="p">&gt;</span> <span class="n">cmake</span> <span class="n">-B</span> <span class="n">build</span> <span class="n">-S</span> <span class="p">.</span> <span class="n">-DCMAKE_TOOLCHAIN_FILE</span><span class="p">=..\</span><span class="n">vcpkg</span><span class="p">\</span><span class="n">scripts</span><span class="p">\</span><span class="n">buildsystems</span><span class="p">\</span><span class="n">vcpkg</span><span class="p">.</span><span class="py">cmake</span> <span class="n">-DCMAKE_BUILD_TYPE</span><span class="p">=</span><span class="n">Release</span>
+</span></span><span class="line"><span class="cl"><span class="n">PS</span><span class="p">&gt;</span> <span class="n">cmake</span> <span class="p">-</span><span class="n">-build</span> <span class="n">build</span> <span class="p">-</span><span class="n">-config</span> <span class="n">Release</span>
+</span></span></code></pre></div><h3 id="msys2--pacman" class="relative group">MSYS2 + pacman <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#msys2--pacman" aria-label="Anchor">#</a></span></h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pacman -S --needed base-devel mingw-w64-x86_64-toolchain
+</span></span><span class="line"><span class="cl">$ pacman -S mingw-w64-x86_64-qt6 mingw-w64-x86_64-opencv mingw-w64-x86_64-tesseract
+</span></span><span class="line"><span class="cl">$ cmake -B build -S . -G <span class="s2">&#34;Unix Makefiles&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DCMAKE_PREFIX_PATH<span class="o">=</span>/mingw64 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+</span></span><span class="line"><span class="cl">$ cmake --build build -j<span class="k">$(</span>nproc<span class="k">)</span>
+</span></span></code></pre></div><h3 id="sample-cmakeliststxt-snippet" class="relative group">Sample CMakeLists.txt Snippet <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#sample-cmakeliststxt-snippet" aria-label="Anchor">#</a></span></h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.28</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">project</span><span class="p">(</span><span class="s">ArkAlarm</span> <span class="s">VERSION</span> <span class="s">2.0</span> <span class="s">LANGUAGES</span> <span class="s">CXX</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span> <span class="s">17</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">find_package</span><span class="p">(</span><span class="s">Qt6</span> <span class="s">REQUIRED</span> <span class="s">COMPONENTS</span> <span class="s">Widgets</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">find_package</span><span class="p">(</span><span class="s">OpenCV</span> <span class="s">4</span> <span class="s">REQUIRED</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">find_package</span><span class="p">(</span><span class="s">Tesseract</span> <span class="s">5</span> <span class="s">REQUIRED</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">add_executable</span><span class="p">(</span><span class="s">ArkAlarm</span>
+</span></span><span class="line"><span class="cl">    <span class="s">main.cpp</span>
+</span></span><span class="line"><span class="cl">    <span class="s">dashboard.cpp</span>
+</span></span><span class="line"><span class="cl">    <span class="s">scanner.cpp</span>
+</span></span><span class="line"><span class="cl">    <span class="s">crashhandler.cpp</span>
+</span></span><span class="line"><span class="cl">    <span class="s">rejoiner.cpp</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">ArkAlarm</span> <span class="s">PRIVATE</span> <span class="s">Qt6::Widgets</span> <span class="o">${</span><span class="nv">OpenCV_LIBS</span><span class="o">}</span> <span class="s">Tesseract::Tesseract</span><span class="p">)</span><span class="err">
+</span></span></span></code></pre></div><h3 id="common-issues" class="relative group">Common Issues <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#common-issues" aria-label="Anchor">#</a></span></h3><ol>
+<li><strong>Missing tessdata</strong> – Ensure the <code>eng.traineddata</code> file exists under <code>./tessdata</code>.</li>
+<li><strong>Qt plugin path</strong> – On MSYS2, set <code>QT_PLUGIN_PATH=/mingw64/lib/qt6/plugins</code>.</li>
+<li><strong>OpenCV ABI mismatch</strong> – Match compiler and architecture across dependencies.</li>
+<li><strong>Unsigned driver</strong> – Some overlays require enabling test signing mode in Windows.</li>
+</ol>
+<h2 id="packaging--distribution" class="relative group">Packaging &amp; Distribution <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#packaging--distribution" aria-label="Anchor">#</a></span></h2><p>A production build packages the following assets:</p>
+<ul>
+<li><code>ArkAlarm.exe</code> and Qt runtime DLLs (<code>Qt6Core.dll</code>, <code>Qt6Widgets.dll</code>, etc.).</li>
+<li><code>opencv_world490.dll</code> or equivalent split modules.</li>
+<li><code>tesseract.dll</code> plus <code>leptonica.dll</code>.</li>
+<li><code>tessdata/</code> directory with required language files.</li>
+<li>Default YAML configuration and sample server list.</li>
+</ul>
+<p>Checklist before shipping:</p>
+<ol>
+<li>Run <code>windeployqt</code> to gather Qt plugins.</li>
+<li>Include VC++ redistributable or link statically.</li>
+<li>Verify fonts and DPI settings on high-resolution monitors.</li>
+<li>Sign binaries with an Authenticode certificate if distributing broadly.</li>
+</ol>
+
+  
+  
+  
+  
+  
+
+  
+  
+    
+    
+  
+  <figure class="mx-auto my-0 rounded-md">
+    <img src="images/installer.png" alt="" class="mx-auto my-0 rounded-md"/>
+    <figcaption class="text-center">Example installer built with WiX</figcaption>
+  </figure>
+
+
+<h2 id="performance--reliability" class="relative group">Performance &amp; Reliability <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#performance--reliability" aria-label="Anchor">#</a></span></h2><p>Using a 1080p capture region and <code>psm=6</code>, the OCR step averages <strong>35 ms</strong> on a mid-range CPU. The full pipeline, including preprocessing and decision logic, runs under <strong>60 ms</strong> per frame, enabling sub-second reaction times at a 1.5 s interval.</p>
+<h3 id="measuring-ocr-accuracy" class="relative group">Measuring OCR Accuracy <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#measuring-ocr-accuracy" aria-label="Anchor">#</a></span></h3><ol>
+<li>Capture 100 real in-game screenshots.</li>
+<li>Label the ground truth tokens manually.</li>
+<li>Use the following script to benchmark:</li>
+</ol>
+<p>A precision above <strong>98%</strong> with recall around <strong>96%</strong> has been observed. Variations arise from motion blur and gamma settings. For more rigorous analysis, a synthetic test harness replays archived footage at different frame rates while logging latency and recognition confidence. Profiling with tools such as VerySleepy or Visual Studio Performance Analyzer helps pinpoint bottlenecks in screen capture or Tesseract initialization, guiding further optimization.</p>
+<h3 id="reliability-tests" class="relative group">Reliability Tests <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#reliability-tests" aria-label="Anchor">#</a></span></h3><ul>
+<li><strong>Stress Reconnect</strong>: 100 forced disconnects with a 97% successful rejoin rate.</li>
+<li><strong>Crash Dialog</strong>: 20 simulated crashes; handler closed the dialog in under 10 s each time.</li>
+<li><strong>CPU Load</strong>: Under 10% average on a Ryzen 5600X.</li>
+</ul>
+<h2 id="security--compliance" class="relative group">Security &amp; Compliance <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#security--compliance" aria-label="Anchor">#</a></span></h2><p>Ark Alarm V2 operates solely through <strong>window-level interactions</strong>. It does <strong>not</strong> inject code, patch memory, or modify network traffic. All inputs are simulated keyboard and mouse events available through standard OS APIs. This approach aims to respect the game&rsquo;s terms of service and avoid anti-cheat triggers.</p>
+<p>The project gathers no telemetry and stores configuration locally. Network communication is limited to user-defined webhooks for notifications. The codebase is released under the MIT License, allowing commercial and private use with minimal obligations. Contributors are expected to follow the project&rsquo;s code of conduct and ensure that any third-party libraries comply with open-source distribution requirements.</p>
+<h2 id="roadmap" class="relative group">Roadmap <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#roadmap" aria-label="Anchor">#</a></span></h2><p>TODO</p>
+<h2 id="faq" class="relative group">FAQ <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#faq" aria-label="Anchor">#</a></span></h2><ol>
+<li><strong>Is Ark Alarm V2 a cheat?</strong>
+No. It only observes the game window and automates rejoining; it does not alter gameplay mechanics.</li>
+<li><strong>Why does OCR fail on certain resolutions?</strong>
+Ensure the window is not scaled by Windows DPI settings and capture the exact log area.</li>
+<li><strong>Can I use languages other than English?</strong>
+Yes. Add the appropriate <code>*.traineddata</code> file to <code>tessdata/</code> and set <code>ocr.lang</code> in the config.</li>
+<li><strong>How do I debug overlay artifacts?</strong>
+Launch with <code>--debug-overlay</code> to draw bounding boxes and FPS statistics.</li>
+<li><strong>Does it work on unofficial servers?</strong>
+It works as long as the server list appears in the standard Steam interface. Custom launchers may require additional scripting.</li>
+<li><strong>How do I contribute?</strong>
+Fork the repository, add features or fixes, and submit a pull request. See <code>CONTRIBUTING.md</code> &gt; TODO: write contributor guide.</li>
+<li><strong>Where are logs stored?</strong>
+By default under <code>%APPDATA%/ArkAlarm/logs</code>. The path is configurable via <code>config.log_path</code>.</li>
+<li><strong>Can I trigger external hardware alarms?</strong>
+Yes. Implement a plugin that toggles a GPIO pin or uses serial communication.</li>
+<li><strong>Will V2 support Ark: Survival Ascended?</strong>
+Experimental support is being evaluated once stable APIs are available.</li>
+<li><strong>How do I reset the settings?</strong>
+Delete the YAML configuration file; the application will regenerate defaults on next launch.</li>
+</ol>
+<h2 id="appendices" class="relative group">Appendices <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#appendices" aria-label="Anchor">#</a></span></h2><h3 id="minimal-reconnect-code-snippet" class="relative group">Minimal Reconnect Code Snippet <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#minimal-reconnect-code-snippet" aria-label="Anchor">#</a></span></h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Rejoiner</span><span class="o">::</span><span class="n">simulateJoin</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span> <span class="o">&amp;</span><span class="n">server</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sendKey</span><span class="p">(</span><span class="n">Qt</span><span class="o">::</span><span class="n">Key_F1</span><span class="p">);</span> <span class="c1">// open favourites
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">QThread</span><span class="o">::</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sendText</span><span class="p">(</span><span class="n">server</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sendKey</span><span class="p">(</span><span class="n">Qt</span><span class="o">::</span><span class="n">Key_Return</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="dependency-links" class="relative group">Dependency Links <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#dependency-links" aria-label="Anchor">#</a></span></h3><ul>
+<li><a href="https://www.qt.io/" target="_blank" rel="noreferrer">Qt</a></li>
+<li><a href="https://opencv.org/" target="_blank" rel="noreferrer">OpenCV</a></li>
+<li><a href="https://github.com/tesseract-ocr/tesseract" target="_blank" rel="noreferrer">Tesseract OCR</a></li>
+<li><a href="https://www.msys2.org/" target="_blank" rel="noreferrer">MSYS2</a></li>
 </ul>
 
       </div>
