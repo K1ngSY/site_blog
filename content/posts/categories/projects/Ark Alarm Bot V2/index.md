@@ -9,7 +9,7 @@ tags = ["projects", "posts"]
 
 # Ark Alarm Bot V2
 
-Ark Alarm Bot V2 ([GitHub repository](https://github.com/K1ngSY/Ark_Alarm_V2)) is an automated monitoring and alerting tool for Windows, designed for *ARK: Survival Ascended*.  
+**Ark Alarm Bot V2** ([GitHub repository](https://github.com/K1ngSY/Ark_Alarm_V2)) is an automated monitoring and alerting tool for Windows, designed for *ARK: Survival Ascended*.  
 
 The first generation of the project was called **ASA-Faerie** ([GitHub repository](https://github.com/K1ngSY/ASA-Faerie)). Since the initial version suffered from frequent crashes and was filled with spaghetti code (the V2 codebase is still not fully standardized but represents a significant improvement), I spent several months gradually refactoring and rewriting the project.  
 
