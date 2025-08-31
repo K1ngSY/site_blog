@@ -11,6 +11,8 @@ tags = ["hugo", "congo", "first", "posts"]
 
 This is my very first blog post built with **Hugo** and the **Congo theme**.
 
+I just want to 
+
 - ✍️ Written in Markdown
 - 📦 Structured as a Page Bundle
 - 🖼️ Supports local images

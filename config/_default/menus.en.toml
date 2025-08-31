@@ -21,13 +21,13 @@
   weight = 6
 
 [[main]]
-  name = "Blog"
+  name = "Posts"
   pageRef = "posts"
   weight = 10
 
 [[main]]
   name = "Categories"
-  pageRef = "categories"
+  pageRef = "posts/categories"
   weight = 20
 
 [[main]]
