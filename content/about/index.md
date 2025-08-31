@@ -7,46 +7,64 @@ tags = ["personal", "intro"]
 +++
 
 
-Hi 👋 I’m **Shunyao**.  
++++
+date = '2025-08-29T16:25:25-07:00'
+draft = false
+title = 'About'
+description = "Learn more about me"
+tags = ["personal", "intro"]
++++
+
+# Hi 👋 I’m **Shunyao**
+
 This is my personal site built with [Hugo](https://gohugo.io/) + [Congo](https://jpanther.github.io/congo/).
 
-- 🎓 CS student at De Anza College
-- 💻 Projects: Ark Alarm Bot(Qt C++)
-- 🌏 Based in California
+- 🎓 CS student at De Anza College, planning to transfer to a UC campus  
+- 💻 Projects: Ark Alarm Bot (C++17 + Qt, OpenCV, OCR)  
+- 🖥️ PC enthusiast & DIY builder, often helping friends assemble their first rigs  
+- 📷 Hobbyist photographer and former soccer player  
+- 🌏 Based in California  
 
 ![Me](avatar.png)
 
 ---
 
-## Interests & Hobbies 🎮
+## Passion for Computer Science 💻
 
-I’ve always been passionate about gaming, and over the years I’ve played many classics and popular titles.
+My journey into computer science began back in middle school. When many classmates were playing PC games, I became fascinated with the idea of building my own machine so I could join them. That curiosity led me to DIY PC build videos, and before long, I was immersed in the world of computer hardware.
 
-- **GTA Series**: I grew up with *Vice City*, *San Andreas*, and of course *GTA V*.  
-- **Racing Games**: I completed *Forza Horizon 4* and *Forza Horizon 5* on expert difficulty. I also enjoy driving simulators like *Euro Truck Simulator 2* and *American Truck Simulator*.  
-- **FPS Games**:  
-  - I was an *Overwatch 1* player for many years, starting in middle school. Sadly, I didn’t play *Overwatch 2* much after Blizzard games were suspended in China due to licensing issues.  
-  - Around the same time, I also got into *PUBG*. I wasn’t the best shot and didn’t have many friends playing, but it was still a memorable part of my gaming journey.  
-  - Later, I switched to *Apex Legends* when it became a global phenomenon. I started playing in late middle school and have kept at it ever since, with over **700 hours** logged. I only took a short break when the game’s popularity dipped, but otherwise it has remained one of my favorite shooters.  
+By the second year of middle school, after saving up for months, I finally built my first PC. It was an unforgettable experience: learning how to install an operating system, configure drivers, and even explore workarounds for internet restrictions in mainland China. That process not only introduced me to concepts like DNS and proxies, but also sparked a lasting passion for understanding how computers truly work.
 
-- **Single-Player Games**: I love story-driven and challenging titles. I’ve finished *The Witcher 3*, *Sekiro: Shadows Die Twice*, *Detroit: Become Human*, *GTA V*, and *Dying Light*.  
+Over time, this interest grew into more than just a hobby. I started helping classmates and friends build their first PCs, guiding them from selecting components to completing their systems. Even today, I keep up with hardware news, benchmarks, and build guides—not because I own the most powerful setup, but because I love exploring, optimizing, and sharing knowledge.  
 
-- **Survival Games**: During the COVID-19, I dedicated over **1400 hours** to *ARK: Survival Evolved*. Most of my time was in PvP, where I joined a large tribe with dozens of players. Together we defended our base, launched raids, and built unforgettable memories. That was probably the longest continuous stretch I’ve ever spent on a single game.  
-  Because I played *ARK* for such a long time, it also became one of the main inspirations for building my **Ark Alarm Bot** project later on.
+Now, as a CS student at De Anza College, I have the chance to study the field systematically, and I know for certain that computer science is not just a subject for me—it’s a discipline I want to keep exploring deeply.
 
 ---
 
-Gaming has been a big part of my free time and personal growth. Whether competitive multiplayer, immersive single-player adventures, or long-term survival challenges, I’ve always enjoyed diving deep into virtual worlds.
+## Projects 🔧
+
+One of my most meaningful projects is **Ark Alarm Bot**, an automated monitoring and alerting tool designed for *ARK: Survival Evolved*.  
+
+My long-term involvement with ARK inspired me to create a solution that combined image processing, automation, and error handling into a single system. What began as a way to solve challenges inside a game grew into a significant coding project, where I applied C++17, Qt, OpenCV, and OCR technologies.  
+
+This experience taught me how to take inspiration from my personal interests and transform it into a project that required real problem-solving skills, engineering discipline, and months of iterative development.
 
 ---
 
-## Beyond Gaming ⚽📷
+## Broader Interests 🎮⚽📷
 
-Another big part of my life, especially during high school, was soccer.  
-I had been practicing the sport since I was very young—joining my elementary school’s soccer team as early as second grade. Although I didn’t play much during middle school, things changed in high school when I met a group of classmates who were just as passionate about the game as I was.  
+Beyond pure academics and projects, I have a range of interests that shaped who I am:
 
-Every afternoon during the long recess, we would head to the field, running, sweating, and enjoying the thrill of the matches. Sometimes we even played against students from other grades, which made the experience even more exciting. Through soccer, I not only stayed active but also built strong friendships that have remained meaningful to me long after those games ended.
+- **Gaming**: My gaming experiences, particularly in survival and FPS titles, taught me teamwork, perseverance, and how to adapt to challenges. These experiences also inspired me to explore automation and system design, directly influencing projects like Ark Alarm Bot.  
 
-Apart from sports, I also developed a love for photography. I never studied it formally, but I always felt the urge to capture the world whenever I came across a beautiful scene. In high school, I bought a second-hand Fujifilm digital zoom camera, which became one of my favorite possessions. With it, I documented countless fleeting moments on campus—sunsets over the fields, candid shots of friends, and everyday details that now feel like precious memories of my school life.
+- **Soccer**: I started playing soccer in elementary school and continued throughout high school, often competing with classmates from different grades. Soccer gave me not only physical endurance but also lifelong friendships built through teamwork and shared passion.  
 
-These experiences in sports and photography shaped much of who I am outside of academics and gaming, giving me both lasting friendships and a way to preserve the moments that matter most.
+- **Photography**: In high school, I developed a love for capturing moments with a second-hand Fujifilm digital camera. Documenting campus life and fleeting scenes gave me a way to preserve memories and appreciate details in everyday life.
+
+---
+
+## Closing Thoughts ✨
+
+From building PCs and studying computer science, to developing projects inspired by personal interests, to the friendships made through sports and photography—each of these experiences reflects my curiosity, creativity, and persistence.  
+
+This blog is my space to continue sharing that journey: my projects, my passions, and the lessons I learn along the way.
