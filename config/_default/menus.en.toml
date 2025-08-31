@@ -26,23 +26,28 @@
   weight = 10
 
 [[main]]
-  name = "Categories"
-  pageRef = "posts/categories"
-  weight = 20
+ name = "Projects"
+ pageRef = "posts/projects"
+ weight = 15
 
-[[main]]
-  name = "GitHub"
-  url = "https://github.com/K1ngSY"
-  weight = 25
-  [main.params]
-    icon = "github"
-    showName = false
-    target = "_blank"
+# [[main]]
+#   name = "Categories"
+#   pageRef = "posts/categories"
+#   weight = 20
 
 [[main]]
   name = "Tags"
   pageRef = "tags"
   weight = 30
+
+[[main]]
+  name = "GitHub"
+  url = "https://github.com/K1ngSY"
+  weight = 35
+  [main.params]
+    icon = "github"
+    showName = false
+    target = "_blank"  
 
 [[main]]
   identifier = "search"

@@ -4,7 +4,7 @@
   
     
       <url>
-            <loc>http://localhost:1313/posts/categories/projects/ark-alarm-bot-v2/</loc>
+            <loc>http://localhost:1313/posts/projects/ark-alarm-bot-v2/</loc>
             <lastmod>2025-08-30T21:47:09-07:00</lastmod>
           </url>
     
@@ -24,15 +24,8 @@
   
     
       <url>
-            <loc>http://localhost:1313/posts/categories/projects/</loc>
+            <loc>http://localhost:1313/posts/projects/</loc>
             <lastmod>2025-08-30T21:42:51-07:00</lastmod>
-          </url>
-    
-  
-    
-      <url>
-            <loc>http://localhost:1313/posts/categories/</loc>
-            <lastmod>2025-08-30T21:39:59-07:00</lastmod>
           </url>
     
   

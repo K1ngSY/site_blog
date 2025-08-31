@@ -11,9 +11,9 @@
     <atom:link href="http://localhost:1313/tags/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ark Alarm Bot V2</title>
-      <link>http://localhost:1313/posts/categories/projects/ark-alarm-bot-v2/</link>
+      <link>http://localhost:1313/posts/projects/ark-alarm-bot-v2/</link>
       <pubDate>Sat, 30 Aug 2025 21:47:09 -0700</pubDate>
-      <guid>http://localhost:1313/posts/categories/projects/ark-alarm-bot-v2/</guid>
+      <guid>http://localhost:1313/posts/projects/ark-alarm-bot-v2/</guid>
       <description>An automated Windows tool for ARK: Survival Ascended that uses C++17, Qt, and OCR-based image processing to provide reliable, unattended monitoring and alerts.</description>
     </item>
     <item>
