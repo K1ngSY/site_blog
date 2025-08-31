@@ -26,12 +26,11 @@ This V2 version is re-implemented in **C++17** and **Qt 6.9**, leveraging **Open
 # Ark Alarm V2 Technical Overview
 
 ## Introduction
-Ark Alarm V2 is the second generation of an open-source **Ark: Survival Evolved** alarm assistant. While the initial V1 prototype proved the concept, it suffered from limited modularity and brittle platform integration. Version 2 was rewritten in **C++17** and **Qt 6.9** to achieve cross-platform window management, a plugin-friendly architecture, and higher OCR accuracy. Major improvements include:
+Ark Alarm V2 is the second generation of an open-source **Ark: Survival Evolved** alarm assistant. While the initial V1 prototype proved the concept, it suffered from limited modularity and brittle platform integration. Version 2 was rewritten in **C++17** and **Qt 6.9** to achieve higher OCR accuracy and better program stability. Major improvements include:
 
 - A unified **image processing pipeline** built on OpenCV 4.x and Tesseract 5.x.
 - Robust **crash detection** and automatic recovery from the "Shooter Crash Reporter" dialog.
 - A **rejoiner** subsystem that re-enters servers after disconnects.
-- Structured configuration via YAML and a richer logging subsystem.
 
 {{< figure src="images/dashboard.png" caption="Ark Alarm V2 dashboard showing overlay and status widgets" >}}
 
@@ -42,9 +41,8 @@ Ark Alarm V2 is the second generation of an open-source **Ark: Survival Evolved*
 | **UI Toolkit** | Qt 6.9 | Widgets, signals/slots |
 | **Image Processing** | OpenCV 4.x | Window capture, filtering |
 | **OCR Engine** | Tesseract 5.x | LSTM-based recognition |
-| **Build System** | CMake 3.28+ | Cross-platform builds |
+| **Build System** | QMake | Comes with Qt Creator |
 | **Packaging** | WiX Toolset / NSIS | > TODO: verify installer choice |
-| **CI/CD** | GitHub Actions | Unit tests & cross-compilation |
 
 ## Architecture Overview
 Ark Alarm V2 is divided into loosely coupled modules communicating through Qt signals. The core components are:
