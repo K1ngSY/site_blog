@@ -139,7 +139,7 @@
     "keywords": ["projects","posts"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1682"
+    "wordCount": "1664"
   }
   </script>
     
@@ -617,7 +617,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2025-08-30 21:47:09 -0700 PDT">30 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>1682 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
+      <time datetime="2025-08-30 21:47:09 -0700 PDT">30 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>1664 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
     
 
     
@@ -645,12 +645,11 @@
 <li><strong>OpenCV</strong></li>
 <li><strong>Tesseract OCR</strong></li>
 </ul>
-<h1 id="ark-alarm-v2-technical-overview" class="relative group">Ark Alarm V2 Technical Overview <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#ark-alarm-v2-technical-overview" aria-label="Anchor">#</a></span></h1><h2 id="introduction" class="relative group">Introduction <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#introduction" aria-label="Anchor">#</a></span></h2><p>Ark Alarm V2 is the second generation of an open-source <strong>Ark: Survival Evolved</strong> alarm assistant. While the initial V1 prototype proved the concept, it suffered from limited modularity and brittle platform integration. Version 2 was rewritten in <strong>C++17</strong> and <strong>Qt 6.9</strong> to achieve cross-platform window management, a plugin-friendly architecture, and higher OCR accuracy. Major improvements include:</p>
+<h1 id="ark-alarm-v2-technical-overview" class="relative group">Ark Alarm V2 Technical Overview <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#ark-alarm-v2-technical-overview" aria-label="Anchor">#</a></span></h1><h2 id="introduction" class="relative group">Introduction <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#introduction" aria-label="Anchor">#</a></span></h2><p>Ark Alarm V2 is the second generation of an open-source <strong>Ark: Survival Evolved</strong> alarm assistant. While the initial V1 prototype proved the concept, it suffered from limited modularity and brittle platform integration. Version 2 was rewritten in <strong>C++17</strong> and <strong>Qt 6.9</strong> to achieve higher OCR accuracy and better program stability. Major improvements include:</p>
 <ul>
 <li>A unified <strong>image processing pipeline</strong> built on OpenCV 4.x and Tesseract 5.x.</li>
 <li>Robust <strong>crash detection</strong> and automatic recovery from the &ldquo;Shooter Crash Reporter&rdquo; dialog.</li>
 <li>A <strong>rejoiner</strong> subsystem that re-enters servers after disconnects.</li>
-<li>Structured configuration via YAML and a richer logging subsystem.</li>
 </ul>
 
   
@@ -701,18 +700,13 @@
       </tr>
       <tr>
           <td><strong>Build System</strong></td>
-          <td>CMake 3.28+</td>
-          <td>Cross-platform builds</td>
+          <td>QMake</td>
+          <td>Comes with Qt Creator</td>
       </tr>
       <tr>
           <td><strong>Packaging</strong></td>
           <td>WiX Toolset / NSIS</td>
           <td>&gt; TODO: verify installer choice</td>
-      </tr>
-      <tr>
-          <td><strong>CI/CD</strong></td>
-          <td>GitHub Actions</td>
-          <td>Unit tests &amp; cross-compilation</td>
       </tr>
   </tbody>
 </table>
