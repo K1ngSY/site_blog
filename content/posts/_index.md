@@ -5,7 +5,7 @@ title = 'Posts'
 summary = "All my blog posts"
 [cascade]
 showDate = true
-showAuthor = false
+showAuthor = true
 showSummary = true
 invertPagination = true
 +++
