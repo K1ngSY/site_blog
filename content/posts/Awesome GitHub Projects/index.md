@@ -37,6 +37,32 @@ OctoBot stands out because it integrates AI-powered prediction models into tradi
 **My contribution:**
 ![Github Issue](Screenshot-2025-09-12-15.04.34.png)
 
+---
+
+### 📌 Project: [RustDesk](https://github.com/rustdesk/rustdesk)
+
+**Description:**  
+RustDesk is a free, open-source remote desktop software written in Rust. It provides a full-featured alternative to commercial tools like TeamViewer or AnyDesk, enabling secure remote access, desktop sharing, file transfer, and screen control. Unlike many competitors, RustDesk is completely transparent and community-driven, ensuring users retain control over their data and connections.
+
+**Why It’s Interesting:**  
+What makes RustDesk stand out is its **ease of deployment** and **flexibility**. By default, it supports both **relay (proxy) connections** and **direct peer-to-peer connections**, meaning it can work reliably across firewalls and NAT environments. For users who want full privacy and independence, hosting a personal RustDesk server is straightforward: running a single lightweight Docker container is often all it takes. This setup not only provides greater control over remote sessions but also removes the need for expensive monthly subscriptions to proprietary remote desktop software—often saving $10 or more per month.  
+
+RustDesk is also designed with **convenience and accessibility** in mind. Its user-friendly interface makes it approachable for non-technical users, while its cross-platform support (Windows, macOS, Linux, iOS, and Android) ensures it fits into almost any environment. The project has an active open-source community that continuously improves stability, performance, and features.
+
+**Tech Stack:**  
+- Language: Rust (core implementation)  
+- UI: Flutter for cross-platform interfaces  
+- Tools: Docker, WebRTC, NAT traversal technologies  
+
+**Key Features:**  
+- 🔑 End-to-end encryption for secure remote sessions  
+- 🔄 Support for both relay and direct P2P connections  
+- 🐳 Easy self-hosting with a simple Docker container  
+- 💻 Cross-platform: Windows, macOS, Linux, iOS, Android  
+- 📂 File transfer, clipboard sync, and multi-monitor support  
+- 🌍 Open-source, with an active and fast-growing community  
+
+
 
 <!-- ## Template for Each Project
 
