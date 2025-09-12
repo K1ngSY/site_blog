@@ -34,6 +34,10 @@ OctoBot stands out because it integrates AI-powered prediction models into tradi
 - Active open-source community and continuous development  
 
 
+**My contribution:**
+![Github Issue](Screenshot-2025-09-12-15.04.34.png)
+
+
 <!-- ## Template for Each Project
 
 ### 📌 Project: [Project Name](https://github.com/username/repo)
