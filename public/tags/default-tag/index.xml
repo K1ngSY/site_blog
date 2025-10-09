@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Default Tag on Shunyao | Blog</title>
+    <link>http://localhost:1313/tags/default-tag/</link>
+    <description>Recent content in Default Tag on Shunyao | Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copy, _right?_ :thinking_face:</copyright>
+    <lastBuildDate>Wed, 08 Oct 2025 19:12:11 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/default-tag/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linear Algebra</title>
+      <link>http://localhost:1313/posts/linear-algebra/</link>
+      <pubDate>Wed, 08 Oct 2025 19:12:11 -0700</pubDate>
+      <guid>http://localhost:1313/posts/linear-algebra/</guid>
+      <description>Default summary</description>
+    </item>
+  </channel>
+</rss>

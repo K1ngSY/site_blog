@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Open-Source on Shunyao | Blog</title>
-    <link>http://localhost:1313/tags/open-source/</link>
+    <link>http://localhost:56847/tags/open-source/</link>
     <description>Recent content in Open-Source on Shunyao | Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copy, _right?_ :thinking_face:</copyright>
     <lastBuildDate>Wed, 03 Sep 2025 18:40:10 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:56847/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Awesome GitHub Projects</title>
-      <link>http://localhost:1313/posts/awesome-github-projects/</link>
+      <link>http://localhost:56847/posts/awesome-github-projects/</link>
       <pubDate>Wed, 03 Sep 2025 18:40:10 -0700</pubDate>
-      <guid>http://localhost:1313/posts/awesome-github-projects/</guid>
+      <guid>http://localhost:56847/posts/awesome-github-projects/</guid>
       <description>Showcasing inspiring open-source work that caught my attention on GitHub.</description>
     </item>
   </channel>

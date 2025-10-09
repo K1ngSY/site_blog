@@ -2,32 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Shunyao | Blog</title>
-    <link>http://localhost:1313/tags/posts/</link>
+    <link>http://localhost:56847/tags/posts/</link>
     <description>Recent content in Posts on Shunyao | Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copy, _right?_ :thinking_face:</copyright>
-    <lastBuildDate>Wed, 03 Sep 2025 18:40:10 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Oct 2025 19:12:11 -0700</lastBuildDate>
+    <atom:link href="http://localhost:56847/tags/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linear Algebra</title>
+      <link>http://localhost:56847/posts/linear-algebra/</link>
+      <pubDate>Wed, 08 Oct 2025 19:12:11 -0700</pubDate>
+      <guid>http://localhost:56847/posts/linear-algebra/</guid>
+      <description>Some tips for my Linear Algebra Study</description>
+    </item>
     <item>
       <title>Awesome GitHub Projects</title>
-      <link>http://localhost:1313/posts/awesome-github-projects/</link>
+      <link>http://localhost:56847/posts/awesome-github-projects/</link>
       <pubDate>Wed, 03 Sep 2025 18:40:10 -0700</pubDate>
-      <guid>http://localhost:1313/posts/awesome-github-projects/</guid>
+      <guid>http://localhost:56847/posts/awesome-github-projects/</guid>
       <description>Showcasing inspiring open-source work that caught my attention on GitHub.</description>
     </item>
     <item>
       <title>Ark Alarm Bot V2</title>
-      <link>http://localhost:1313/posts/projects/ark-alarm-bot-v2/</link>
+      <link>http://localhost:56847/posts/projects/ark-alarm-bot-v2/</link>
       <pubDate>Sat, 30 Aug 2025 21:47:09 -0700</pubDate>
-      <guid>http://localhost:1313/posts/projects/ark-alarm-bot-v2/</guid>
+      <guid>http://localhost:56847/posts/projects/ark-alarm-bot-v2/</guid>
       <description>An automated Windows tool for ARK: Survival Ascended that uses C++17, Qt, and OCR-based image processing to provide reliable, unattended monitoring and alerts.</description>
     </item>
     <item>
       <title>My First Post</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
+      <link>http://localhost:56847/posts/my-first-post/</link>
       <pubDate>Fri, 29 Aug 2025 17:04:18 -0700</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
+      <guid>http://localhost:56847/posts/my-first-post/</guid>
       <description>My first blog post which tests the site functionally.</description>
     </item>
   </channel>
