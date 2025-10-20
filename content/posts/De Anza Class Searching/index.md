@@ -17,14 +17,12 @@ A minimal, **static** web page that builds De Anza schedule URLs from a few inpu
   - `dept`: Department code (official dropdown options)
   - `t`: `<QuarterLetter><Year>`; e.g. `W2026`
     - Spring = **S**, Summer = **M**, Fall = **F**, Winter = **W**
-  - Note: the `quarter` parameter is **not** included in the final URL.
 
 ## Features
 - Centered, lightweight UI (pure HTML/CSS/JS, no frameworks).
 - Official department `<select>` options for convenience.
 - Live URL preview.
 - **Open in new tab** and **Copy link** actions.
-- Author badge linking to your site: **blog.shunyao.xyz**.
 
 ## How to Use
 1. Pick the **Department Code** from the dropdown.
@@ -37,9 +35,3 @@ A minimal, **static** web page that builds De Anza schedule URLs from a few inpu
 - **Summer → `M`** (note the custom mapping)
 - Fall → `F`
 - Winter → `W`
-
-## Deploy
-1. Save the page as `index.html`.
-2. Deploy to any static host:
-   - **GitHub Pages**: push to a repo → *Settings → Pages* → select branch → wait for the public URL.
-   - **Netlify/Vercel/Cloudflare Pages**: drag-and-drop or connect your repo.
