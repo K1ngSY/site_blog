@@ -3,7 +3,7 @@ date = '2025-10-19T20:07:14-07:00'
 draft = false
 title = 'De Anza Class Searching'
 description = "Class Searching — a Tiny Static Link Builder"
-summary = "Help you find the hidden classes on De Anza website"
+summary = "Help you to find the hidden classes on De Anza website"
 tags = ["web", "javascript", "static-site", "posts"]
 +++
 
