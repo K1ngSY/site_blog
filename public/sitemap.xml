@@ -4,25 +4,38 @@
   
     
       <url>
-            <loc>http://localhost:56847/posts/linear-algebra/</loc>
-            <lastmod>2025-10-08T19:12:11-07:00</lastmod>
+            <loc>http://localhost:1313/posts/de-anza-class-searching/</loc>
+            <lastmod>2025-10-19T20:07:14-07:00</lastmod>
           </url>
     
   
     
   
     
+  
+    
       <url>
-            <loc>http://localhost:56847/</loc>
-            <lastmod>2025-10-08T19:12:11-07:00</lastmod>
+            <loc>http://localhost:1313/</loc>
+            <lastmod>2025-10-19T20:07:14-07:00</lastmod>
           </url>
     
   
     
   
     
+  
+    
+  
+    
       <url>
-            <loc>http://localhost:56847/posts/awesome-github-projects/</loc>
+            <loc>http://localhost:1313/posts/linear-algebra/</loc>
+            <lastmod>2025-10-08T19:12:11-07:00</lastmod>
+          </url>
+    
+  
+    
+      <url>
+            <loc>http://localhost:1313/posts/awesome-github-projects/</loc>
             <lastmod>2025-09-03T18:40:10-07:00</lastmod>
           </url>
     
@@ -31,7 +44,7 @@
   
     
       <url>
-            <loc>http://localhost:56847/posts/projects/ark-alarm-bot-v2/</loc>
+            <loc>http://localhost:1313/posts/projects/ark-alarm-bot-v2/</loc>
             <lastmod>2025-08-30T21:47:09-07:00</lastmod>
           </url>
     
@@ -40,7 +53,7 @@
   
     
       <url>
-            <loc>http://localhost:56847/posts/projects/</loc>
+            <loc>http://localhost:1313/posts/projects/</loc>
             <lastmod>2025-08-30T21:42:51-07:00</lastmod>
           </url>
     
@@ -53,21 +66,21 @@
   
     
       <url>
-            <loc>http://localhost:56847/posts/my-first-post/</loc>
+            <loc>http://localhost:1313/posts/my-first-post/</loc>
             <lastmod>2025-08-29T17:04:18-07:00</lastmod>
           </url>
     
   
     
       <url>
-            <loc>http://localhost:56847/posts/</loc>
+            <loc>http://localhost:1313/posts/</loc>
             <lastmod>2025-08-29T17:01:53-07:00</lastmod>
           </url>
     
   
     
       <url>
-            <loc>http://localhost:56847/about/</loc>
+            <loc>http://localhost:1313/about/</loc>
             <lastmod>2025-08-29T16:25:25-07:00</lastmod>
           </url>
     

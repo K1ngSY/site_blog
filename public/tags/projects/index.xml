@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Shunyao | Blog</title>
-    <link>http://localhost:56847/tags/projects/</link>
+    <link>http://localhost:1313/tags/projects/</link>
     <description>Recent content in Projects on Shunyao | Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copy, _right?_ :thinking_face:</copyright>
     <lastBuildDate>Sat, 30 Aug 2025 21:47:09 -0700</lastBuildDate>
-    <atom:link href="http://localhost:56847/tags/projects/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ark Alarm Bot V2</title>
-      <link>http://localhost:56847/posts/projects/ark-alarm-bot-v2/</link>
+      <link>http://localhost:1313/posts/projects/ark-alarm-bot-v2/</link>
       <pubDate>Sat, 30 Aug 2025 21:47:09 -0700</pubDate>
-      <guid>http://localhost:56847/posts/projects/ark-alarm-bot-v2/</guid>
+      <guid>http://localhost:1313/posts/projects/ark-alarm-bot-v2/</guid>
       <description>An automated Windows tool for ARK: Survival Ascended that uses C++17, Qt, and OCR-based image processing to provide reliable, unattended monitoring and alerts.</description>
     </item>
   </channel>
